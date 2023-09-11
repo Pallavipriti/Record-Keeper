@@ -24,7 +24,12 @@ export default function App() {
     setForm({ form });
 
   }
+ const handlePress=(e)=>{
+    if (e.key =='Enter')
+    addData();
+  }
 
+  
   const removeItem = (index) => {
     let arr = data;
     arr.splice(index, 1);
@@ -36,12 +41,15 @@ export default function App() {
       <div className='form'>
         <Stack spacing={3} direction="row">
           <TextField value={form.name}
+              onKeyDown={(e)=>handlePress(e)}
             onChange={(event) => setForm({ ...form, name: event.target.value })}
             id="outlined-basic" label="Name" variant="outlined" />
           <TextField value={form.email}
+              onKeyDown={(e)=>handlePress(e)}
             onChange={(event) => setForm({ ...form, email: event.target.value })}
             id="outlined-basic" label="Email" variant="outlined" />
           <TextField value={form.contact}
+            onKeyDown={(e)=>handlePress(e)}
             onChange={(event) => setForm({ ...form, contact: event.target.value })}
             id="outlined-basic" label="Contact" variant="outlined" />
           <Button onClick={addData} id='button' variant="contained">
